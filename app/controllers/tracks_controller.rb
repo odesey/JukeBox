@@ -1,6 +1,6 @@
 class TracksController < ApplicationController
-  # GET /tracks
-  # GET /tracks.json
+  require 'pry'
+
   def index
     @tracks = Track.all
 
@@ -10,8 +10,12 @@ class TracksController < ApplicationController
     end
   end
 
-  # GET /tracks/1
-  # GET /tracks/1.json
+
+  def search 
+    @tracks = Track.search params[:name]
+  end
+  
+
   def show
     @track = Track.find(params[:id])
 

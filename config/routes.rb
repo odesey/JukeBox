@@ -1,18 +1,17 @@
 JukeBox::Application.routes.draw do
-  resources :tracks
-
+  resources :tracks do
+    collection do
+      get 'search'
+    end
+  end
 
   resources :libraries
 
-
   resources :genres
-
 
   resources :albums
 
-
   resources :artists
-
 
   resources :users
 

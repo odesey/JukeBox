@@ -24,7 +24,7 @@
     <td><%= track.img_url %></td>
     <td><%= track.duration %></td>
     <td><%= track.location %></td>
-    <td><%= track.album.name %></td>
+    <td><%= track.album_id %></td>
     <td><%= track.genre_id %></td>
     <td><%= track.artist_id %></td>
     <td><%= link_to 'Show', track %></td>
@@ -35,5 +35,13 @@
 </table>
 
 <br />
+
+    <div class="field">
+              <%= form_tag tracks_path, :method => 'get' do %>
+              <%= label_tag(:name, "Search for:") %>
+              <%= text_field_tag :name %>
+              <%= submit_tag "Search", :name => nil %>
+        <% end %>
+    </div>
 
 <%= link_to 'New Track', new_track_path %>
