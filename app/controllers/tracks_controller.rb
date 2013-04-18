@@ -1,5 +1,6 @@
+require 'pry'
 class TracksController < ApplicationController
-  require 'pry'
+  
 
   def index
     @tracks = Track.all

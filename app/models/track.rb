@@ -4,7 +4,7 @@ class Track < ActiveRecord::Base
   belongs_to :artists
   belongs_to :albums  
 
-  def self.search
+  def self.search(title)
   	binding.pry
     @track = Track.find(params[:id]) 
     client = Soundcloud.new(:client_id => 'd95790c46856021f7718e7ec26913e55') 
@@ -12,3 +12,13 @@ class Track < ActiveRecord::Base
   end
 
 end
+
+
+		# json = HTTParty.get(url)
+		# 		results = []
+		# 		json.each do |track_info|
+		# 			results << Track.new(track_info)
+		# 		end
+		# 	return results
+		# 	end
+		# end

@@ -47,3 +47,17 @@ class TracksControllerTest < ActionController::TestCase
     assert_redirected_to tracks_path
   end
 end
+
+
+# context "A Track" do
+#     setup do
+#       expected = [{'title' => 'Yesterday'}] #OR whats on the next line
+#       expected = JSON.parse(File.open("path/to/file").read)
+#       Track.stubs(:search).returns(expected)
+#       @tracks = Track.search("what ever your result will be")
+#     end
+#     should "give me a list of songs by somebody" do
+#       assert_equal "somebody", @tracks['artist']
+#     end
+#     end
+    

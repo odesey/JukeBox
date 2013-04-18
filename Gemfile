@@ -9,6 +9,7 @@ gem 'sqlite3'
 gem 'soundcloud'
 gem 'json'
 gem 'pry'
+# gem 'mocha' :required => :false
 
 
 # Gems used only for assets and not required

@@ -37,7 +37,7 @@
 <br />
 
     <div class="field">
-              <%= form_tag tracks_path, :method => 'get' do %>
+              <%= form_tag search_tracks_path, :method => 'post' do %>
               <%= label_tag(:name, "Search for:") %>
               <%= text_field_tag :name %>
               <%= submit_tag "Search", :name => nil %>

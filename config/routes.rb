@@ -1,7 +1,7 @@
 JukeBox::Application.routes.draw do
   resources :tracks do
     collection do
-      get 'search'
+      post 'search'
     end
   end
 
