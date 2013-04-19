@@ -1,4 +1,5 @@
 require 'pry'
+require 'soundcloud'
 class TracksController < ApplicationController
   
 
@@ -13,7 +14,23 @@ class TracksController < ApplicationController
 
 
   def search 
-    @tracks = Track.search params[:name]
+    # binding.pry
+    @tracks = Track.search(params[:search])
+    # # binding.pry
+    # # search.html
+    #   x = 0
+    #   i = 0
+    #   # @results = {}
+    #   while x < @track.length do
+    #     # binding.pry
+    #     @results = @track[i]
+    #     # binding.pry
+    #     i += 1
+    #     x += 1
+    #     @results
+    #   end
+    # binding.pry
+    @tracks
   end
   
 
