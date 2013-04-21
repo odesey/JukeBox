@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+         <table>
+           <tr>
+             <th>Title</th>
+             <th>Genre</th>
+             <th>Stream URL</th>
+             <th>Cover url</th>
+             <th></th>
+             <th></th>
+             <th></th>
+           </tr>
+          
+          
+              <% x = 0 %>
+              <% while x < @tracks.length do %>
+              <% @tracks.each do |track| %>
+          <tr>
+               <td><%= track[:title] %></td>
+               <td><%= track[:genre] %></td>
+               <td><%= track[:stream_url] %></td>
+               <td><%= track.check_box 'genre[]', track.id %></td>
+
+             <% x += 1 %>
+           </tr>
+         <% end %>
+
+         </table>
+        <% end %>
+         <br />
+</div>
+
+
