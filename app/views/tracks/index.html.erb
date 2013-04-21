@@ -1,3 +1,6 @@
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<script src="/jquery.masonry.min.js"></script>
+
 <h1>Listing tracks</h1>
 
 <table>
@@ -35,9 +38,14 @@
 </table>
 
 <br />
-
+                
     <div class="field">
+              
               <%= form_tag search_tracks_path, :method => 'post' do %>
+
+              <%= select(:track, :scope, [['Local', 1], ['Soundcloud', 2]]) %>
+              
+
               <%= label_tag(:search, "Search for:") %>
               <%= text_field_tag :search %>
               <%= submit_tag "Search", :name => nil %>
@@ -45,3 +53,138 @@
     </div>
 
 <%= link_to 'New Track', new_track_path %>
+
+
+    <div class="container cols">
+        <img class="item" width="300" height="220" src="images/1000.jpg" alt="Yahoo! Hack 2012 India">
+        <div class="item one"></div>
+        <div class="item two"></div>
+        <img class="item" width="300" height="202" src="images/1700.jpg" alt="Reid Burke Node.js Presentation">
+        <div class="item one"></div>
+        <img class="item" width="300" height="300" src="images/1020.jpg" alt="Good Read on a Lazy Afternoon"> 
+        <div class="item three"></div>
+        <img width="300" height="225" src="images/1023.jpg" alt="Pictrendz Winners" class="item">
+        <div class="item two"></div>
+        <img class="item" width="300" height="300" height="202" src="images/0900.jpg" alt="Afternoon Workspace">
+        <div class="item five"></div>
+        <div class="item one"></div>
+        <img width="300" height="225" src="images/1010.jpg" alt="Durga Puja" class="item">
+        <div class="item two"></div>
+        <img width="300" height="225" src="images/1230.jpg" alt="Frog" class="item">
+        <div class="item six"></div>
+        <img class="item" width="300" height="202" src="images/1900.jpg" alt="Winning Moments">
+        <div class="item three"></div>
+        <img width="300" height="225" src="images/1400.jpg" alt="Diyas" class="item">
+        <div class="item two"></div>
+
+        <img class="item" width="300" height="220" src="images/1090.jpg" alt="Yahoo! Hack 2012 India">
+        <div class="item one"></div>
+        <div class="item two"></div>
+        <img class="item" width="300" height="202" src="images/1740.jpg" alt="Reid Burke Node.js Presentation">
+        <div class="item one"></div>
+        <img class="item" width="300" height="300" src="images/1220.jpg" alt="Good Read on a Lazy Afternoon"> 
+        <div class="item three"></div>
+        <img width="300" height="225" src="images/0023.jpg" alt="Pictrendz Winners" class="item">
+        <div class="item two"></div>
+        <img class="item" width="300" height="300" height="202" src="images/0900.jpg" alt="Afternoon Workspace">
+        <div class="item five"></div>
+        <div class="item one"></div>
+        <img width="300" height="225" src="images/1510.jpg" alt="Durga Puja" class="item">
+        <div class="item two"></div>
+        <img width="300" height="225" src="images/1130.jpg" alt="Frog" class="item">
+        <div class="item six"></div>
+        <img class="item" width="300" height="202" src="images/0020.jpg" alt="Winning Moments">
+        <div class="item three"></div>
+        <img width="300" height="225" src="images/1490.jpg" alt="Diyas" class="item">
+        <div class="item two"></div>
+
+        <img class="item" width="300" height="220" src="images/1090.jpg" alt="Yahoo! Hack 2012 India">
+        <div class="item one"></div>
+        <div class="item two"></div>
+        <img class="item" width="300" height="202" src="images/1740.jpg" alt="Reid Burke Node.js Presentation">
+        <div class="item one"></div>
+        <img class="item" width="300" height="300" src="images/1220.jpg" alt="Good Read on a Lazy Afternoon"> 
+        <div class="item three"></div>
+        <img width="300" height="225" src="images/0023.jpg" alt="Pictrendz Winners" class="item">
+        <div class="item two"></div>
+        <img class="item" width="300" height="300" height="202" src="images/0900.jpg" alt="Afternoon Workspace">
+        <div class="item five"></div>
+        <div class="item one"></div>
+        <img width="300" height="225" src="images/1510.jpg" alt="Durga Puja" class="item">
+        <div class="item two"></div>
+        <img width="300" height="225" src="images/1130.jpg" alt="Frog" class="item">
+        <div class="item six"></div>
+        <img class="item" width="300" height="202" src="images/0020.jpg" alt="Winning Moments">
+        <div class="item three"></div>
+        <img width="300" height="225" src="images/1490.jpg" alt="Diyas" class="item">
+        <div class="item two"></div>
+    </div>
+
+    
+<script>
+
+$(document).ready(function(){
+        $('.container').masonry({
+          itemSelector: '.box',
+          columnWidth: 300,
+          gutterWidth: 20
+        });
+    });
+
+  $(function(){
+    
+    var $container = $('#container');
+    
+    $('#container').masonry({
+      columnWidth: 100
+    });
+    
+    $container.masonry({
+      itemSelector: '.box',
+      columnWidth: 220,
+      isAnimated: !Modernizr.csstransitions
+    });
+    
+    // Sites using Masonry markup
+    var $sites = $('#sites'),
+        $loadingItem = $container.find('.loading');
+        
+    var ajaxError = function(){
+      $loadingItem.text('Could not load examples :(');
+    };
+    
+    // dynamically load sites using Masonry from Zootool
+    $.getJSON('http://zootool.com/api/users/items/?username=desandro' +
+        '&apikey=8b604e5d4841c2cd976241dd90d319d7' +
+        '&tag=bestofmasonry&callback=?')
+      .error( ajaxError )
+      .success(function( data ){
+        
+        // proceed only if we have data
+        if ( !data || !data.length ) {
+          ajaxError();
+          return;
+        }
+        var items = [],
+            item, datum;
+        
+        for ( var i=0, len = data.length; i < len; i++ ) {
+          datum = data[i];
+          item = '<div class="item example"><a href="' + datum.url + '">'
+            + '<img src="' + datum.image.replace('/l.', '/m.') + '" />'
+            + '<b>' + datum.title + '</b>'
+            + '</a></div>';
+          items.push( item );
+        }
+        
+        var $items = $( items.join('') );
+        $items.imagesLoaded(function(){
+          $container
+            .masonry( 'remove', $loadingItem ).masonry()
+            .append( $items ).masonry( 'appended', $items, true );
+        });
+        
+      });
+    
+  });
+</script>

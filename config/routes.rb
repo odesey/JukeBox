@@ -2,6 +2,7 @@ JukeBox::Application.routes.draw do
   resources :tracks do
     collection do
       post 'search'
+      post 'save'
     end
   end
 

@@ -59,6 +59,21 @@ class TracksController < ApplicationController
     @track = Track.find(params[:id])
   end
 
+  def save
+    binding.pry
+      @track = Track.new(params[:track])
+
+      respond_to do |format|
+        if @track.save
+          format.html { redirect_to @track, notice: 'Track was successfully created.' }
+          format.json { render json: @track, status: :created, location: @track }
+        else
+          format.html { render action: "new" }
+          format.json { render json: @track.errors, status: :unprocessable_entity }
+        end
+      end
+  end
+
   # POST /tracks
   # POST /tracks.json
   def create

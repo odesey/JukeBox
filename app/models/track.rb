@@ -5,21 +5,9 @@ class Track < ActiveRecord::Base
   belongs_to :artists
   belongs_to :albums  
 
-
- #  def self.list()
-	# x = 0
-	# i = 0
-	# while x < @tracks.length do
-	# 	@results = @tracks[i]
-	# 	# binding.pry
-	# 	i += 1
-	# 	x += 1
-	# 	@results
-	# 	binding.pry
- #    end
- #  end
-
-
+  # def save
+  # 	Track.save
+  # end
 
   def self.search(title)
   	# binding.pry

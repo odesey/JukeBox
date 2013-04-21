@@ -9,6 +9,7 @@ gem 'sqlite3'
 gem 'soundcloud'
 gem 'json'
 gem 'pry'
+gem 'jquery-rails'
 # gem 'mocha' :required => :false
 
 
